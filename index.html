@@ -2,17 +2,37 @@
 <html>
 <head>
   <title>Don't build the Giant Robot!</title>
-
+  <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Don't build the giant robot!</h1>
-  <div id="robotCounter"></div>
-  <input id="yourGuess" type="text">
-  <button id="submitGuess" type="submit">Guess</button>
-  <h2>Correct Guesses</h2>
-  <div id="goodGuess"></div>
-  <h3>Incorrect Guesses</h3>
-  <div id="badGuess"></div>
+  <div id="game_board">
+    <h1 class="title">Don't build the giant robot!</h1>
+    <div id="robotCounter">
+      <h2 id="robotWarning" class="underground">It's powering up!!</h2>
+      <img id="robotHead" class="underground" src="images/head.svg" alt="Robot Head">
+      <img id="robotArms" class="underground" src="images/arms.svg" alt="Robot Arms">
+      <img id="robotBody" class="underground" src="images/body.svg" alt="Robot Body">
+      <img id="robotLegs" class="underground" src="images/legs.svg" alt="Robot Legs">
+    </div>
+  </div>
+  <div id="game_terminal">
+    <section id="correct_guess">
+      <h1>Robot Shutdown Password</h1>
+      <div id="attempts_left">Attempts Left: <span id="attemptsLeft"></span></div>
+      <div id="goodGuess"></div>
+    </section>
+    <section id="guessing_area">
+      <label for="yourGuess">Enter letter: </label><input id="yourGuess" type="text">
+      <button id="submitGuess" type="submit">Guess</button>
+    </section>
+    <section id="incorrect_guesses">
+      <h1>Incorrect Guesses</h1>
+      <div id="badGuess"></div>
+    </section>
+  </div>
+
+
+
   <script src="js/main.js" type="text/javascript"></script>
 
 </body>

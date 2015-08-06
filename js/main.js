@@ -3,21 +3,23 @@
 var robotInit = 0;
 var guess = document.getElementById('submitGuess');
 var correctWord = document.getElementById('goodGuess');
-var wordList = ["apple", "puppy", "cat", "computer", "function"];
+var wordList = ["apple", "puppy", "cat", "computer", "function", "word", "javascript", "infographic", "player", "wordpress", "robot", "pasword", "money"];
 
-var word = wordList[Math.floor(Math.random() * wordList.length)]; //chooses a random word from wordList
+var word; //chooses a random word from wordList
 var guessedLetters = [];
 var missedLetters = [];
 var updatedWord = [];
+var remainingAttempts = 5;
 
 //Sets the game
 var gameBoard = function() {
-
+  word = wordList[Math.floor(Math.random() * wordList.length)];
   //Adds underscores for each letter.
   for(var i = 0; i < word.length; i++) {
     updatedWord.push("_");
   }
   correctWord.innerHTML = updatedWord.join(" ");
+  document.getElementById('attemptsLeft').innerHTML = remainingAttempts;
 };
 
 //Resets game after win
@@ -29,6 +31,7 @@ var resetGame = function() {
   missedLetters = [];
   updatedWord = [];
   robotInit = 0;
+  remainingAttempts = 5;
   gameBoard();
 };
 
@@ -60,15 +63,28 @@ var newGuess = function() {
       document.getElementById('goodGuess').innerHTML = updatedWord.join(" ");
       if (yourGuess === false) {
         robotInit++;
-        document.getElementById('robotCounter').innerHTML = robotInit;
+        document.getElementById('attemptsLeft').innerHTML = remainingAttempts - robotInit;
         guessedLetters.push(newLetter);
         missedLetters.push(newLetter);
+        //adds robot
+        if (robotInit === 1) {
+          document.getElementById("robotLegs").className = "aboveground";
+        } else if (robotInit === 2) {
+          document.getElementById("robotBody").className = "aboveground";
+        } else if (robotInit === 3) {
+          document.getElementById("robotArms").className = "aboveground";
+        } else if (robotInit === 4) {
+          document.getElementById("robotHead").className = "aboveground";
+          document.getElementById("robotWarning").className = "aboveground";
+        }
       }
+
       if (robotInit === 5) {
-        alert("Game over!");
+        alert("OH NO! The robot is active and destroying the city!");
+        resetGame();
       }
       if (updatedWord.join("") === word) {
-        alert("Yay you win!");
+        alert("That was close, thanks for deactivating the robot!");
         resetGame();
       }
     }

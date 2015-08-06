@@ -1,0 +1,63 @@
+@import url('http://fonts.googleapis.com/css?family=Press+Start+2P|Lato:400,300,700');
+$primary-font: "Lato", sans-serif;
+$secondary-font: 'Press Start 2P', monospace;
+h1.title {
+  font: {
+    size: 2em;
+    family: $primary-font;
+    weight: 300;
+    variant: small-caps;
+  }
+  color: #fff;
+  text-align: right;
+  text-transform: capitalize;
+}
+
+#game_terminal {
+  color: #4CAF50;
+  font-family: $secondary-font;
+  h1 {
+    font-size: 1em;
+    font-family: $secondary-font;
+    margin-bottom: 20px;
+  }
+  #correct_guess {
+    font-size: 2em;
+    letter-spacing: 10px;
+    text-align: center;
+  }
+  #guessing_area {
+    text-align: center;
+    #yourGuess {
+      background: transparent;
+      width: 50px;
+      border-bottom: 2px solid #4CAF50;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      color: #4CAF50;
+      font-size: 1.5em;
+      text-align: center;
+    }
+    #submitGuess {
+      padding: 5px;
+      cursor: pointer;
+      background: transparent;
+      color: #4CAF50;
+      font-size: 1.5em;
+      border: 2px solid #4CAF50;
+
+    }
+  }
+  #incorrect_guesses {
+    font-size: 1.25em;
+  }
+}
+
+#robotWarning {
+  font-size: 2em;
+  color: #fff;
+  font-family: $secondary-font;
+  font-variant: small-caps;
+  text-align: center;
+}

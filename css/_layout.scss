@@ -1,0 +1,102 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #000;
+}
+
+.title {
+  padding: 20px;
+}
+
+#game_board {
+  height: 340px;
+  width: 100vw;
+  position: relative;
+  z-index: 3;
+  background-color: #0288D1;
+}
+
+#game_terminal {
+  position: relative;
+  height: 320px;
+  width: 100vw;
+  z-index: 5;
+  padding-top: 30px;
+  background-color: #000;
+  #correct_guess {
+    width: 70vw;
+    margin: 0 auto 50px;
+    #attempts_left {
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  #guessing_area {
+    width: 60vw;
+    margin: 0 auto;
+  }
+  #incorrect_guesses {
+    width: 60vw;
+    margin: 0 auto;
+  }
+}
+
+
+#robotCounter {
+  position: relative;
+  height: 280px;
+  width: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+  img {
+    margin: 0 auto;
+    position: absolute;
+  }
+  .underground {
+    bottom: -100em;
+  }
+  #robotWarning {
+    position: absolute;
+    right: 0;
+    width: 160px;
+    &.aboveground {
+      @include transition-duration(1.0s);
+      bottom: 130px;
+    }
+  }
+
+  #robotHead {
+    width: 80px;
+    left: 78px;
+    &.aboveground {
+      @include transition-duration(1.0s);
+      bottom: 160px;
+    }
+  }
+  #robotArms {
+    width: 235px;
+    &.aboveground {
+      @include transition-duration(1.0s);
+      bottom: 110px;
+    }
+  }
+  #robotBody {
+    width: 89px;
+    left: 73px;
+    &.aboveground {
+      @include transition-duration(1.0s);
+      bottom: 95px;
+    }
+  }
+  #robotLegs {
+    width: 100px;
+    left: 73px;
+    &.aboveground {
+      @include transition-duration(1.0s);
+      bottom: 0;
+    }
+  }
+}
