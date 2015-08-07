@@ -32,6 +32,11 @@ var resetGame = function() {
   updatedWord = [];
   robotInit = 0;
   remainingAttempts = 5;
+  document.getElementById("robotLegs").className = "underground";
+  document.getElementById("robotHead").className = "underground";
+  document.getElementById("robotWarning").className = "underground";
+  document.getElementById("robotArms").className = "underground";
+  document.getElementById("robotBody").className = "underground";
   gameBoard();
 };
 
