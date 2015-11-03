@@ -13,7 +13,9 @@ var remainingAttempts = 5;
 
 //Sets the game
 var gameBoard = function() {
-  word = wordList[Math.floor(Math.random() * wordList.length)];
+  var dirtyWord = wordList[Math.floor(Math.random() * wordList.length)];
+  word = dirtyWord.toLowerCase();
+
   //Adds underscores for each letter.
   for(var i = 0; i < word.length; i++) {
     updatedWord.push("_");
@@ -45,7 +47,8 @@ var resetGame = function() {
 // Guessing Logic
 var newGuess = function() {
   var yourGuess = false;
-  var newLetter = document.getElementById('yourGuess').value;
+  var dirtyNewLetter = document.getElementById('yourGuess').value;
+  var newLetter = dirtyNewLetter.toLowerCase();
 
   //console.log(newLetter);
   if (newLetter.length === 0) { //returns alert if input is empty
@@ -64,7 +67,6 @@ var newGuess = function() {
           yourGuess = true;
         }
       }
-      console.log(updatedWord.join(""));
       document.getElementById('goodGuess').innerHTML = updatedWord.join(" ");
       if (yourGuess === false) {
         robotInit++;
