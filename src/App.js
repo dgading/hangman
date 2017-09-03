@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import logo from './logo.svg';
-
-import BlankLetter from './components/BlankLetter';
-import Button from './components/Button';
 
 import './App.css';
 
@@ -11,26 +7,29 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      letters: [],
-      guessedLetters: []
+      gameActive: false,
+      gameOver: false,
+      gameWon: false,
+      gameWord: ['t', 'e', 's', 't'],
+      letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+                'w', 'x', 'y', 'z'],
+      guessedLetters: [],
+      failedGuesses: 0,
+      errorMessage: 'Random Error Message'
     }
   }
 
-  setWord(word) {
+  setWord = () => {
     this.setState({
-      letters: word.split('')
+      gameActive: true
     })
   }
 
-  componentDidMount() {
-    axios.get('http://setgetgo.com/randomword/get.php')
-      .then(function(response){
-        console.log(response.data);
-        this.setWord(response.data);
-      }.bind(this))
-      .catch(function(error) {
-        console.log(error);
-      });
+  resetGame = () => {
+    this.setState({
+      gameActive: false
+    })
   }
 
   render() {
@@ -38,20 +37,42 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Let's Play Hangman</h2>
         </div>
         <p className="App-intro">
           To get started, click the button below
         </p>
-        <Button text="Start Game" />
+        <p>{this.state.errorMessage}</p>
         <div>
-          {this.state.letters.map((letter, index) =>
-            <BlankLetter 
-            letter={letter}
-            key={index}>
-          </BlankLetter>
+          <div>Fail 1 - HEAD</div>
+          <div>Fail 2 - BODY</div>
+          <div>Fail 3 - LEFT ARM</div>
+          <div>Fail 4 - RIGHT ARM</div>
+          <div>Fail 5 - LEFT LEG</div>
+          <div>Fail 6 - RIGHT LEG</div>
+          <p>You Lost</p>
+          <p>You Won</p>
+          <button>Play Again?</button>
+        </div>
+        <div>
+          {this.state.gameWord.map((letter, index) =>
+            <span className="letter-placeholder" key={index}>_ </span>
           )}
         </div>
+        <form onSubmit={this.guessLetter}>
+          <label>Enter letter: </label>
+          <input type='text' value={this.state.letterInput} onChange={this.handleLetterInput} />
+          <button type='submit'>Guess</button>
+        </form>
+        <div>
+          <ul>
+            {this.state.letters.map((letter, index) =>
+              <li key={index}>{letter}</li>
+            )}
+          </ul>
+        </div>
+        <button onClick={this.setWord}>Start Game</button>
+        <button onClick={this.resetGame}>Reset Game</button>
       </div>
     );
   }
