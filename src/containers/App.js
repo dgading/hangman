@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '../logo.svg';
 
 import './App.css';
 
+import GameManager from './GameManager';
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gameActive: false,
-      gameOver: false,
-      gameWon: false,
-      gameWord: ['t', 'e', 's', 't'],
-      letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-                'w', 'x', 'y', 'z'],
-      guessedLetters: [],
-      failedGuesses: 0,
-      errorMessage: 'Random Error Message'
-    }
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = {
+  //   //   gameActive: false,
+  //   //   gameOver: false,
+  //   //   gameWon: false,
+  //   //   gameWord: ['t', 'e', 's', 't'],
+  //   //   letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+  //   //             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+  //   //             'w', 'x', 'y', 'z'],
+  //   //   guessedLetters: [],
+  //   //   failedGuesses: 0,
+  //   //   errorMessage: 'Random Error Message'
+  //   // }
+  // }
 
   setWord = () => {
     this.setState({
@@ -42,37 +44,36 @@ class App extends Component {
         <p className="App-intro">
           To get started, click the button below
         </p>
-        <p>{this.state.errorMessage}</p>
+        {/* <p>{this.state.errorMessage}</p> */}
         <div>
-          <div>Fail 1 - HEAD</div>
+          {/* <div>Fail 1 - HEAD</div>
           <div>Fail 2 - BODY</div>
           <div>Fail 3 - LEFT ARM</div>
           <div>Fail 4 - RIGHT ARM</div>
           <div>Fail 5 - LEFT LEG</div>
           <div>Fail 6 - RIGHT LEG</div>
           <p>You Lost</p>
-          <p>You Won</p>
-          <button>Play Again?</button>
+          <p>You Won</p> */}
+          {/* <button>Play Again?</button> */}
         </div>
         <div>
-          {this.state.gameWord.map((letter, index) =>
+          {/* {this.state.gameWord.map((letter, index) =>
             <span className="letter-placeholder" key={index}>_ </span>
-          )}
+          )} */}
         </div>
-        <form onSubmit={this.guessLetter}>
+        {/* <form onSubmit={this.guessLetter}>
           <label>Enter letter: </label>
           <input type='text' value={this.state.letterInput} onChange={this.handleLetterInput} />
           <button type='submit'>Guess</button>
-        </form>
+        </form> */}
         <div>
-          <ul>
+          {/* <ul>
             {this.state.letters.map((letter, index) =>
               <li key={index}>{letter}</li>
             )}
-          </ul>
+          </ul> */}
         </div>
-        <button onClick={this.setWord}>Start Game</button>
-        <button onClick={this.resetGame}>Reset Game</button>
+        <GameManager />
       </div>
     );
   }
