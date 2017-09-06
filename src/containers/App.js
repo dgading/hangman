@@ -2,22 +2,18 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 
 import './App.css';
-
-import GameManager from './GameManager';
+import { toggleGameActive, guessWrong } from '../actions';
 
 class App extends Component {
   // constructor(props) {
   //   super(props);
   //   // this.state = {
-  //   //   gameActive: false,
   //   //   gameOver: false,
   //   //   gameWon: false,
   //   //   gameWord: ['t', 'e', 's', 't'],
   //   //   letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
   //   //             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
   //   //             'w', 'x', 'y', 'z'],
-  //   //   guessedLetters: [],
-  //   //   failedGuesses: 0,
   //   //   errorMessage: 'Random Error Message'
   //   // }
   // }
@@ -34,6 +30,8 @@ class App extends Component {
     })
   }
 
+  
+
   render() {
     return (
       <div className="App">
@@ -41,6 +39,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Let's Play Hangman</h2>
         </div>
+        <button onClick={() => toggleGameActive(true)}>Start Game</button>
         <p className="App-intro">
           To get started, click the button below
         </p>
@@ -73,7 +72,7 @@ class App extends Component {
             )}
           </ul> */}
         </div>
-        <GameManager />
+        {/* <GameManager /> */}
       </div>
     );
   }

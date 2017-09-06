@@ -1,9 +1,13 @@
-export const START_GAME = 'START_GAME';
+export const TOGGLE_GAME_STATUS = 'TOGGLE_GAME_STATUS';
 export const GUESS_WRONG = 'GUESS_WRONG';
 
 
-export function startGame(bool) {
-  return { type: START_GAME, bool }
+export function toggleGameActive(bool) {
+  console.log('blah')
+  return { 
+    type: TOGGLE_GAME_STATUS, 
+    bool 
+  }
 }
 
 export function guessWrong(letter) {

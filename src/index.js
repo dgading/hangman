@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import { startGame, guessWrong } from './actions';
+import { toggleGameActive, guessWrong } from './actions';
 
 import hangmanApp from './reducers';
 
@@ -27,8 +27,8 @@ let unsubscribe = store.subscribe(() =>
   console.log(store.getState())
 )
 
-store.dispatch(startGame(true));
-store.dispatch(guessWrong('t'));
-store.dispatch(guessWrong('f'))
+// store.dispatch(toggleGameActive(true));
+// // store.dispatch(guessWrong('t'));
+// // store.dispatch(guessWrong('f'))
 
 unsubscribe();

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { START_GAME, GUESS_WRONG } from '../actions'
+import { TOGGLE_GAME_STATUS, GUESS_WRONG } from '../actions'
 
 const initialState = {
-  gameActive: false
+  gameActive: false,
+  gameWon: false,
+  gameLost: false
 }
 
 const initialGuesses = {
@@ -12,9 +14,9 @@ const initialGuesses = {
 
 function gameState(state = initialState, action) {
   switch (action.type) {
-    case START_GAME:
+    case TOGGLE_GAME_STATUS:
       return Object.assign({}, state, {
-        gameActive: true,
+        gameActive: action.bool
       })
     default:
       return state;
