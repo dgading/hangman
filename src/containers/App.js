@@ -1,81 +1,25 @@
-import React, { Component } from 'react';
-import logo from '../logo.svg';
+import { connect } from 'react-redux';
+import { startGame, guessLetter } from '../actions';
 
-import './App.css';
-import { toggleGameActive, guessWrong } from '../actions';
+import Main from '../components/Main';
 
-class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = {
-  //   //   gameOver: false,
-  //   //   gameWon: false,
-  //   //   gameWord: ['t', 'e', 's', 't'],
-  //   //   letters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-  //   //             'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-  //   //             'w', 'x', 'y', 'z'],
-  //   //   errorMessage: 'Random Error Message'
-  //   // }
-  // }
-
-  setWord = () => {
-    this.setState({
-      gameActive: true
-    })
-  }
-
-  resetGame = () => {
-    this.setState({
-      gameActive: false
-    })
-  }
-
-  
-
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Let's Play Hangman</h2>
-        </div>
-        <button onClick={() => toggleGameActive(true)}>Start Game</button>
-        <p className="App-intro">
-          To get started, click the button below
-        </p>
-        {/* <p>{this.state.errorMessage}</p> */}
-        <div>
-          {/* <div>Fail 1 - HEAD</div>
-          <div>Fail 2 - BODY</div>
-          <div>Fail 3 - LEFT ARM</div>
-          <div>Fail 4 - RIGHT ARM</div>
-          <div>Fail 5 - LEFT LEG</div>
-          <div>Fail 6 - RIGHT LEG</div>
-          <p>You Lost</p>
-          <p>You Won</p> */}
-          {/* <button>Play Again?</button> */}
-        </div>
-        <div>
-          {/* {this.state.gameWord.map((letter, index) =>
-            <span className="letter-placeholder" key={index}>_ </span>
-          )} */}
-        </div>
-        {/* <form onSubmit={this.guessLetter}>
-          <label>Enter letter: </label>
-          <input type='text' value={this.state.letterInput} onChange={this.handleLetterInput} />
-          <button type='submit'>Guess</button>
-        </form> */}
-        <div>
-          {/* <ul>
-            {this.state.letters.map((letter, index) =>
-              <li key={index}>{letter}</li>
-            )}
-          </ul> */}
-        </div>
-        {/* <GameManager /> */}
-      </div>
-    );
+const mapStateToProps = state => {
+  return {
+    gameState: state.gameState,
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onStartGame: bool => {
+      dispatch(startGame(bool))
+    },
+    onGuessLetter: letter => {
+      dispatch(guessLetter(letter))
+    }
+  }
+}
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Main);
 
 export default App;

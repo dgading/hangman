@@ -1,16 +1,14 @@
-export const TOGGLE_GAME_STATUS = 'TOGGLE_GAME_STATUS';
-export const GUESS_WRONG = 'GUESS_WRONG';
-
-
-export function toggleGameActive(bool) {
-  console.log('blah')
+export function startGame(bool) {
   return { 
-    type: TOGGLE_GAME_STATUS, 
+    type: 'START_GAME', 
     bool 
   }
 }
 
-export function guessWrong(letter) {
-  return { type: GUESS_WRONG, letter }
+export function guessLetter(letter) {
+  return {
+    type: 'GUESS_LETTER',
+    letter
+  }
 }
 

@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
-import { toggleGameActive, guessWrong } from './actions';
-
-import hangmanApp from './reducers';
+import store from './store';
 
 import './index.css';
 import App from './containers/App';
 
 import registerServiceWorker from './registerServiceWorker';
 
-let store = createStore(hangmanApp);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -20,15 +16,5 @@ ReactDOM.render(
   </Provider>, 
   document.getElementById('root')
 );
+
 registerServiceWorker();
-
-console.log(store.getState());
-let unsubscribe = store.subscribe(() => 
-  console.log(store.getState())
-)
-
-// store.dispatch(toggleGameActive(true));
-// // store.dispatch(guessWrong('t'));
-// // store.dispatch(guessWrong('f'))
-
-unsubscribe();
